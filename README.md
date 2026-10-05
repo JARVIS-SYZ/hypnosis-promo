@@ -2,7 +2,7 @@
 
 관리 페이지: `https://jarvis-syz.github.io/hypnosis-promo/`
 
-앱은 최면 화면에 들어갈 때 `https://jarvis-syz.github.io/hypnosis-promo/promotion.json`을 새로 읽습니다. 등록된 데이터가 없거나 팝업을 꺼 둔 경우에는 아무것도 표시하지 않습니다. 이 주소는 [promotionConfig.ts](./promotionConfig.ts)에 들어 있으므로 **이 기능을 처음 배포할 때만** 앱 업데이트가 필요합니다. 이후 홍보 내용과 이미지는 관리 페이지에서 바꾸면 됩니다.
+앱은 최면 화면에 들어갈 때 `https://jarvis-syz.github.io/hypnosis-promo/promotion.json`을 새로 읽습니다. 등록된 데이터가 없거나 팝업을 꺼 둔 경우에는 아무것도 표시하지 않습니다. 이 주소는 앱의 `promotionConfig.ts`에 들어 있으므로 **이 기능을 처음 배포할 때만** 앱 업데이트가 필요합니다. 이후 홍보 내용과 이미지는 관리 페이지에서 바꾸면 됩니다.
 
 ## 관리 준비
 
