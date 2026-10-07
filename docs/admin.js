@@ -7,6 +7,7 @@
   const BRANCH = 'main';
   const API = `https://api.github.com/repos/${OWNER}/${REPO}/contents/`;
   const CONFIG_PATH = 'docs/promotion.json';
+  const TOKEN_KEY = 'hypnosis-promo-token';
   const byId = id => document.getElementById(id);
   const tokenField = byId('token');
   const imageField = byId('image');
@@ -195,12 +196,34 @@
     showImage('');
   }
 
+  function storedToken() {
+    try { return localStorage.getItem(TOKEN_KEY) || ''; } catch { return ''; }
+  }
+
+  function storeToken(value) {
+    try {
+      if (value) localStorage.setItem(TOKEN_KEY, value);
+      else localStorage.removeItem(TOKEN_KEY);
+    } catch {}
+    byId('forget').hidden = !storedToken();
+  }
+
+  function forget() {
+    storeToken('');
+    token = '';
+    state = null;
+    list.replaceChildren();
+    render();
+    setStatus('저장된 토큰을 지웠습니다.');
+  }
+
   function load() {
     const supplied = tokenField.value.trim();
     if (supplied) {
       token = supplied;
       tokenField.value = '';
     }
+    storeToken(byId('remember').checked ? token : '');
     if (!token) return setStatus('GitHub 토큰을 입력해 주세요.', true);
     run(async () => {
       const file = await github(CONFIG_PATH);
@@ -278,6 +301,13 @@
     showImage(file ? URL.createObjectURL(file) : '');
   });
   byId('load').addEventListener('click', load);
+  byId('forget').addEventListener('click', forget);
   byId('save').addEventListener('click', save);
   popupOn.addEventListener('change', togglePopup);
+  token = storedToken();
+  byId('forget').hidden = !token;
+  if (token) {
+    tokenField.placeholder = '저장된 토큰 사용 중';
+    load();
+  }
 })();

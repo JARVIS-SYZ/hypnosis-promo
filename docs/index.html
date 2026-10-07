@@ -13,9 +13,10 @@
     <header><span class="eyebrow">HYPNOSIS · PROMOTION</span><h1>최면 앱 홍보 관리</h1><p>홍보를 등록해 두고, 표시할 홍보 하나를 선택한 뒤 팝업을 켜면 앱에 표시됩니다.</p></header>
     <section class="card">
       <h2>GitHub 연결</h2>
-      <p class="help">이 저장소에만 <strong>Contents: Read and write</strong> 권한을 준 Fine-grained personal access token을 입력하세요. 토큰은 브라우저에 저장되지 않습니다.</p>
+      <p class="help">이 저장소에만 <strong>Contents: Read and write</strong> 권한을 준 Fine-grained personal access token을 입력하세요.</p>
       <label for="token">GitHub 토큰</label>
       <div class="token-row"><input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…"><button id="load" type="button" class="secondary">불러오기</button></div>
+      <div class="remember-row"><label class="check"><input id="remember" type="checkbox" checked> 이 기기에서 기억하기</label><button id="forget" type="button" class="link" hidden>저장된 토큰 지우기</button></div>
     </section>
     <section class="card">
       <div class="heading"><h2>앱 팝업</h2><label class="toggle"><input id="popupOn" type="checkbox" role="switch" disabled><span class="track"></span><span id="popupOnLabel">꺼짐</span></label></div>
