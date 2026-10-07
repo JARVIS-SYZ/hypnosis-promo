@@ -10,7 +10,7 @@
 </head>
 <body>
   <main class="shell">
-    <header><span class="eyebrow">HYPNOSIS · PROMOTION</span><h1>최면 앱 홍보 관리</h1><p>내용을 저장하면 앱에서 다음 최면 화면 진입 시 확인합니다.</p></header>
+    <header><span class="eyebrow">HYPNOSIS · PROMOTION</span><h1>최면 앱 홍보 관리</h1><p>홍보를 등록해 두고, 표시할 홍보 하나를 선택한 뒤 팝업을 켜면 앱에 표시됩니다.</p></header>
     <section class="card">
       <h2>GitHub 연결</h2>
       <p class="help">이 저장소에만 <strong>Contents: Read and write</strong> 권한을 준 Fine-grained personal access token을 입력하세요. 토큰은 브라우저에 저장되지 않습니다.</p>
@@ -18,17 +18,27 @@
       <div class="token-row"><input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…"><button id="load" type="button" class="secondary">불러오기</button></div>
     </section>
     <section class="card">
-      <div class="heading"><h2>팝업 내용</h2><label class="switch"><input id="enabled" type="checkbox"><span>팝업 켜기</span></label></div>
+      <div class="heading"><h2>앱 팝업</h2><label class="toggle"><input id="popupOn" type="checkbox" role="switch" disabled><span class="track"></span><span id="popupOnLabel">꺼짐</span></label></div>
+      <p id="popupSummary" class="help">불러오기를 누르면 현재 상태가 표시됩니다.</p>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </section>
+    <section class="card">
+      <h2>새 홍보 등록</h2>
       <label for="image">대표 이미지 <small>JPG · PNG · WebP, 최대 3MB</small></label>
-      <div class="preview"><img id="preview" alt="등록한 홍보 이미지" hidden><span id="empty-preview">이미지를 선택해 주세요</span></div>
+      <div class="preview"><img id="preview" alt="선택한 홍보 이미지" hidden><span id="empty-preview">이미지를 선택해 주세요</span></div>
       <input id="image" type="file" accept="image/jpeg,image/png,image/webp">
       <label for="title">제목</label><input id="title" type="text" maxlength="80" placeholder="새로운 앱을 만나보세요">
       <label for="buttonLabel">버튼 문구</label><input id="buttonLabel" type="text" maxlength="24" value="보러가기">
       <label for="linkUrl">이동 주소</label><input id="linkUrl" type="url" inputmode="url" placeholder="https://example.com">
-      <button id="save" type="button" class="primary">저장하기</button>
-      <p id="status" class="status" role="status" aria-live="polite"></p>
+      <button id="save" type="button" class="primary" disabled>저장하기</button>
     </section>
-    <p class="foot">저장 후 GitHub Pages가 새 파일을 게시하기까지 잠시 걸릴 수 있습니다. 팝업을 끄려면 스위치를 끄고 저장하세요.</p>
+    <section class="card">
+      <h2>저장된 홍보</h2>
+      <p class="help">앱에 표시할 홍보를 하나 선택하세요. 선택은 바로 저장됩니다.</p>
+      <ul id="items" class="items"></ul>
+      <p id="emptyItems" class="help">저장된 홍보가 없습니다.</p>
+    </section>
+    <p class="foot">변경 후 GitHub Pages가 새 파일을 게시하기까지 1~2분 정도 걸릴 수 있습니다.</p>
   </main>
 </body>
 </html>
